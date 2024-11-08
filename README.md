@@ -68,7 +68,7 @@ Follow these steps to set up and play the game locally:
 
 ---
 
-## 📜 Technologies Used
+## 🛠️ Technologies Used
 
 - HTML for structuring the game interface.
 - CSS for styling and layout.
@@ -76,13 +76,13 @@ Follow these steps to set up and play the game locally:
 
 ---
 
-## 🙌 Contributing
+## 🤝 Contributing
 
 Contributions are welcome! Feel free to open issues or submit pull requests to improve the game or suggest new features.
 
 ---
 
-## 📄 License
+## 📜 License
 
 This project is open-source and available under the MIT License.
 
