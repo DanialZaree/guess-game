@@ -1,3 +1,4 @@
+/* Existing styles remain unchanged */
 @import url("https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap");
 
 * {
@@ -16,34 +17,56 @@ body {
   font-family: "Press Start 2P", sans-serif;
   color: #eee;
   background-color: #222;
-  /* background-color: #60b347; */
 }
 
 /* LAYOUT */
 header {
   position: relative;
   height: 35vh;
-  border-bottom: 7px solid #eee;
 }
 
 main {
   height: 65vh;
   color: #eee;
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
   align-items: center;
-  justify-content: space-around;
+  justify-items: center;
 }
 
 .left {
-  width: 52rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.right {
+  width: 100%;
+  font-size: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.instructions {
+  font-size: 1.5rem;
+  grid-column: 1 / span 2;
+  gap: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-
-.right {
-  width: 52rem;
-  font-size: 2rem;
+ul {
+  font-size: 1.25rem;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 5px;
+  list-style: none;
 }
 
 /* ELEMENTS STYLE */
@@ -72,8 +95,8 @@ h1 {
   align-items: center;
   justify-content: center;
 }
-.number::after{
-  content: '';
+.number::after {
+  content: "";
   position: absolute;
   height: 10px;
   width: 100dvw;
@@ -119,6 +142,10 @@ h1 {
 
 .btn:hover {
   background-color: #ccc;
+}
+
+.check:disabled {
+  cursor: not-allowed;
 }
 
 .message {
