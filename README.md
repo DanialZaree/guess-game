@@ -1,7 +1,7 @@
 # Guess My Number!
 
 <p align="center">
-  <img src="img/logo.png" alt="Game Logo">
+  <img src="guessGame/img/logo.png" alt="Game Logo">
 </p>
 
 **Guess My Number** is a fun and interactive number-guessing game. The objective is to guess a secret number between 1 and 20. The game provides feedback for each guess to help you find the correct number!
