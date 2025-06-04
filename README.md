@@ -47,10 +47,10 @@ Here are some screenshots showing various stages of the game:
    - ![Starting Screen](guessGame/img/starter-page.png)
 
 3. **Winning Screen**
-   - ![Winning Screen](img/win-page.png)
+   - ![Winning Screen](guessGame/img/win-page.png)
 
 4. **Game Over Screen**
-   - ![Game Over Screen](img/lose-page.png)
+   - ![Game Over Screen](guessGame/img/lose-page.png)
 
 ---
 
