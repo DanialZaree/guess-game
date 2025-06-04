@@ -88,4 +88,4 @@ This project is open-source and available under the MIT License.
 
 ---
 
-Enjoy playing Guess My Number, and happy guessing!!
+Enjoy playing Guess My Number, and happy guessing!
