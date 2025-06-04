@@ -78,7 +78,7 @@ Follow these steps to set up and play the game locally:
 
 ## 🤝 Contributing
 
-Contributions are welcome! Feel free to open issues or submit pull requests to improve the game or suggest new features.
+Contributions are welcome!! Feel free to open issues or submit pull requests to improve the game or suggest new features.
 
 ---
 
