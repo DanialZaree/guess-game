@@ -12,44 +12,50 @@ const reset = document.querySelector(".again");
 
 // Game state variables
 let score = 10;
-let highScore = 0;
+let highScore = Number(localStorage.getItem("guess_highscore")) || 0;
 let hasWon = false;
+
+// Display saved highscore on load
+showHighScore.textContent = highScore;
 
 // Function to generate a random number between 1 and 20
 let randomNumber = Math.trunc(Math.random() * 20) + 1;
 
 // Function to display a message to the user
-const showMessage = function (showMessage) {
-  message.textContent = showMessage;
+const showMessage = function (msg) {
+  message.textContent = msg;
 };
 
 // Function to handle the guessing logic
 const checkGuess = function () {
-  if (hasWon) {
-    return;
-  }
-  const guessedNumber = Number(guess.value);
+  if (hasWon) return;
+
+  const inputValue = guess.value.trim();
+  const guessedNumber = Number(inputValue);
 
   // When there is no input
-  if (!guessedNumber) {
+  if (!inputValue || isNaN(guessedNumber)) {
     showMessage("Enter your number ):");
+    return;
+  }
 
-    // When player guesses correctly
-  } else if (guessedNumber === randomNumber) {
+  // When player guesses correctly
+  if (guessedNumber === randomNumber) {
     showMessage("You are right (:");
     showNumber.textContent = randomNumber;
     body.style.backgroundColor = "#60b347"; // Green background for win
-    showNumber.style.width = "30rem";
-    check.disabled = true; // This sets the disabled property of the check element to true.
+    showNumber.style.width = window.innerWidth <= 768 ? "22rem" : "30rem";
+    check.disabled = true;
     hasWon = true;
+
     if (score > highScore) {
-      highScore = score; // Update high score
+      highScore = score;
+      localStorage.setItem("guess_highscore", highScore);
       showHighScore.textContent = highScore;
-      return;
     }
 
-    // When guess is wrong
-  } else if (guessedNumber !== randomNumber) {
+  // When guess is wrong
+  } else {
     if (score > 1) {
       guessedNumber < randomNumber
         ? showMessage("Too low! /:")
@@ -65,37 +71,43 @@ const checkGuess = function () {
   }
 };
 
-// Event listener for the 'Check' button
-check.addEventListener("click", checkGuess);
-
-// Event listener for 'Enter' key in the input field
-guess.addEventListener("keydown", function (event) {
-  if (event.key === "Enter") {
-    checkGuess(); // Call the check function on Enter key press
-  }
-});
-
 // Reset game when 'Again' button is clicked
 function resetGame() {
   score = 10;
   showScore.textContent = score;
-  randomNumber = Math.trunc(Math.random() * 20) + 1; // Generate a new number
-  showNumber.textContent = "?"; // Reset the displayed number
-  showNumber.style.width = "15rem";
+  randomNumber = Math.trunc(Math.random() * 20) + 1;
+  showNumber.textContent = "?";
+  showNumber.style.width = window.innerWidth <= 768 ? "12rem" : "15rem";
   showMessage("Start guessing...");
-  body.style.backgroundColor = "#222"; // Reset background color
-  check.disabled = false; // This sets the disabled property of the check element to true.
-  guess.value = ""; // Clear the input field
+  body.style.backgroundColor = "#222";
+  check.disabled = false;
+  guess.value = "";
   hasWon = false;
+  guess.focus();
 }
 
-// Event listener for the reset button
+// Event listeners
+check.addEventListener("click", checkGuess);
 reset.addEventListener("click", resetGame);
 
-// Event listener for the Escape key
+// Event listener for Enter key in input
+guess.addEventListener("keydown", function (event) {
+  if (event.key === "Enter") {
+    checkGuess();
+  }
+});
+
+// Event listener for Escape and Arrow keys
 document.addEventListener("keydown", function (event) {
   if (event.key === "Escape") {
     resetGame();
+  } else if (event.key === "ArrowUp") {
+    const val = Number(guess.value) || 0;
+    if (val < 20) guess.value = val + 1;
+  } else if (event.key === "ArrowDown") {
+    const val = Number(guess.value) || 0;
+    if (val > 1) guess.value = val - 1;
   }
 });
+
 guess.focus();

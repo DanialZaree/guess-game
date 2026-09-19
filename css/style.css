@@ -1,11 +1,9 @@
-/* Existing styles remain unchanged */
 @import url("https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap");
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: inherit;
-  transition: 0.6s all;
 }
 
 html {
@@ -17,12 +15,17 @@ body {
   font-family: "Press Start 2P", sans-serif;
   color: #eee;
   background-color: #222;
+  transition: background-color 0.4s ease;
+  min-height: 100vh;
+  min-height: 100dvh;
+  overflow-x: hidden;
 }
 
 /* LAYOUT */
 header {
   position: relative;
   height: 35vh;
+  border-bottom: 7px solid #eee;
 }
 
 main {
@@ -59,14 +62,18 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-align: center;
+  padding: 0 1.5rem;
 }
+
 ul {
   font-size: 1.25rem;
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
-  gap: 5px;
+  gap: 8px;
   list-style: none;
+  margin-top: 5px;
 }
 
 /* ELEMENTS STYLE */
@@ -78,6 +85,7 @@ h1 {
   top: 52%;
   left: 50%;
   transform: translate(-50%, -50%);
+  padding: 0 1rem;
 }
 
 .number {
@@ -94,14 +102,19 @@ h1 {
   transform: translate(-50%, 50%);
   align-items: center;
   justify-content: center;
+  transition: width 0.4s ease;
+  z-index: 2;
 }
+
 .number::after {
   content: "";
   position: absolute;
-  height: 10px;
-  width: 100dvw;
+  height: 7px;
+  width: 100vw;
   background: #eee;
   z-index: -1;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .between {
@@ -128,6 +141,11 @@ h1 {
   text-align: center;
   display: block;
   margin-bottom: 3rem;
+  outline: none;
+}
+
+.guess:focus {
+  border-color: #ccc;
 }
 
 .btn {
@@ -138,6 +156,7 @@ h1 {
   font-family: inherit;
   padding: 2rem 3rem;
   cursor: pointer;
+  transition: background-color 0.2s;
 }
 
 .btn:hover {
@@ -146,6 +165,7 @@ h1 {
 
 .check:disabled {
   cursor: not-allowed;
+  opacity: 0.6;
 }
 
 .message {
@@ -155,4 +175,104 @@ h1 {
 
 .label-score {
   margin-bottom: 2rem;
+}
+
+/* RESPONSIVE DESIGN (Mobile & Tablet) */
+@media (max-width: 768px) {
+  header {
+    height: auto;
+    min-height: 24rem;
+    padding-bottom: 5rem;
+  }
+
+  h1 {
+    font-size: 2.2rem;
+    top: 55%;
+  }
+
+  .again {
+    top: 1.5rem;
+    left: 1.5rem;
+    font-size: 1.4rem;
+    padding: 1.2rem 1.8rem;
+  }
+
+  .between {
+    top: 1.8rem;
+    right: 1.5rem;
+    font-size: 1.1rem;
+  }
+
+  .number {
+    font-size: 4.5rem;
+    width: 12rem;
+    padding: 2rem 0;
+  }
+
+  main {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    padding: 6rem 2rem 4rem;
+    gap: 3.5rem;
+  }
+
+  .left, .right {
+    width: 100%;
+  }
+
+  .guess {
+    font-size: 4rem;
+    width: 20rem;
+    max-width: 85vw;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .btn {
+    font-size: 1.6rem;
+    padding: 1.5rem 2.5rem;
+  }
+
+  .right {
+    font-size: 1.8rem;
+    gap: 1.5rem;
+  }
+
+  .message {
+    margin-bottom: 2rem;
+    height: auto;
+    text-align: center;
+  }
+
+  .instructions {
+    margin-top: 1.5rem;
+    font-size: 1.3rem;
+  }
+
+  ul {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  .between {
+    font-size: 0.95rem;
+    top: 2rem;
+  }
+
+  .again {
+    font-size: 1.2rem;
+    padding: 1rem 1.4rem;
+  }
+
+  .guess {
+    width: 16rem;
+    font-size: 3.2rem;
+    padding: 1.2rem;
+  }
 }
